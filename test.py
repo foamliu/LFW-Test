@@ -63,16 +63,16 @@ def process():
         class_id = item['class_id']
         sub = item['subject']
 
-        try:
-            bboxes, landmarks = get_central_face_attributes(filename)
+        # try:
+        _, bboxes, landmarks = get_central_face_attributes(filename)
 
-            samples.append(
-                {'class_id': class_id, 'subject': sub, 'full_path': filename, 'bounding_boxes': bboxes,
-                 'landmarks': landmarks})
-        except KeyboardInterrupt:
-            raise
-        except Exception as err:
-            print(err)
+        samples.append(
+            {'class_id': class_id, 'subject': sub, 'full_path': filename, 'bounding_boxes': bboxes,
+             'landmarks': landmarks})
+        # except KeyboardInterrupt:
+        #     raise
+        # except Exception as err:
+        #     print(err)
 
     with open(lfw_pickle, 'wb') as file:
         save = {
